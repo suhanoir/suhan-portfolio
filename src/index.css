@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-pixel: 'Press Start 2P', monospace;
+
+  --color-brand-primary: #2563EB;
+  --color-brand-secondary: #14B8A6;
+  --color-brand-accent: #F59E0B;
+  --color-brand-bg: #F8FAFC;
+  --color-brand-surface: #FFFFFF;
+  --color-brand-text: #0F172A;
+  --color-brand-muted: #64748B;
+  --color-brand-border: #CBD5E1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: #0F172A;
+    background-color: #F8FAFC;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+}
+
+/* Subtle Pixel Grid Background */
+.pixel-grid-pattern {
+  background-color: #F8FAFC;
+  background-image: 
+    linear-gradient(to right, rgba(203, 213, 225, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 213, 225, 0.35) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.pixel-dot-pattern {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Pixel Card & Box Styles - Crisp, Professional 70/30 Blend */
+.pixel-card {
+  background: #FFFFFF;
+  border: 2px solid #CBD5E1;
+  box-shadow: 3px 3px 0px #E2E8F0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.pixel-card:hover {
+  border-color: #2563EB;
+  box-shadow: 4px 4px 0px rgba(37, 99, 235, 0.25);
+  transform: translateY(-2px);
+}
+
+.pixel-card-featured {
+  background: #FFFFFF;
+  border: 2px solid #2563EB;
+  box-shadow: 4px 4px 0px rgba(37, 99, 235, 0.2);
+}
+
+/* 8-bit Inspired Pixel Buttons */
+.pixel-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563EB;
+  color: #FFFFFF;
+  font-weight: 600;
+  border: 2px solid #1D4ED8;
+  box-shadow: 3px 3px 0px #1E40AF;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.pixel-btn-primary:hover {
+  background-color: #1D4ED8;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #1E40AF;
+}
+
+.pixel-btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #1E40AF;
+}
+
+.pixel-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-weight: 600;
+  border: 2px solid #CBD5E1;
+  box-shadow: 3px 3px 0px #CBD5E1;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.pixel-btn-secondary:hover {
+  border-color: #2563EB;
+  color: #2563EB;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #93C5FD;
+}
+
+.pixel-btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #CBD5E1;
+}
+
+.pixel-btn-teal {
+  background-color: #14B8A6;
+  color: #FFFFFF;
+  border: 2px solid #0D9488;
+  box-shadow: 3px 3px 0px #0F766E;
+  transition: all 0.1s ease;
+}
+
+.pixel-btn-teal:hover {
+  background-color: #0D9488;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #0F766E;
+}
+
+.pixel-btn-teal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #0F766E;
+}
+
+/* Pixel Badges */
+.pixel-badge {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Custom Pixel Corner Accent */
+.pixel-corner-tl {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 6px;
+  height: 6px;
+  background-color: #2563EB;
+}
+
+/* XP Bar Fill Pulse Animation */
+@keyframes xp-glow {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+
+.xp-bar-active {
+  animation: xp-glow 2s infinite ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-left: 1px solid #E2E8F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border: 2px solid #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
