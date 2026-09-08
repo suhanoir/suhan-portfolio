@@ -1,19 +1,15 @@
 import React from 'react';
-import { Mail, ArrowRight, Sparkles } from 'lucide-react';
+import { Mail, ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/audio';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 interface HeroProps {
   onExploreProjects: () => void;
-  onExploreSkills: () => void;
-  onGainXp: (amount: number) => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
-  onExploreProjects,
-  onExploreSkills,
-  onGainXp
+  onExploreProjects
 }) => {
   return (
     <section className="relative pt-8 pb-16 md:pt-14 md:pb-24 border-b border-[#CBD5E1] pixel-grid-pattern overflow-hidden">
@@ -77,24 +73,12 @@ export const Hero: React.FC<HeroProps> = ({
               <button
                 onClick={() => {
                   soundManager.playSelect();
-                  onGainXp(25);
                   onExploreProjects();
                 }}
                 className="pixel-btn-primary px-5 py-3 text-xs sm:text-sm font-mono tracking-wide flex items-center gap-2.5"
               >
                 <span>VIEW QUESTS</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => {
-                  soundManager.playBlip(550);
-                  onGainXp(15);
-                  onExploreSkills();
-                }}
-                className="pixel-btn-secondary px-4 py-3 text-xs sm:text-sm font-mono"
-              >
-                <span>EXPLORE SKILL TREE</span>
               </button>
             </div>
 
@@ -244,18 +228,6 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
               </div>
 
-              {/* Bottom XP Interactive Button */}
-              <button
-                onClick={() => {
-                  soundManager.playXpGain();
-                  onGainXp(50);
-                }}
-                className="mt-4 w-full py-2 bg-slate-50 hover:bg-blue-50 text-[#2563EB] border border-dashed border-[#2563EB] text-xs font-mono font-semibold flex items-center justify-center gap-2 transition-colors"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" />
-                <span>INSPECT DEVELOPER (+50 XP)</span>
-              </button>
-
             </div>
           </div>
 
@@ -264,4 +236,3 @@ export const Hero: React.FC<HeroProps> = ({
     </section>
   );
 };
-

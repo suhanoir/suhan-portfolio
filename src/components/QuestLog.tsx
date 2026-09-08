@@ -1,44 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  ExternalLink, CheckCircle2, Circle, Sparkles, 
-  Calendar, CheckSquare, DollarSign, Play
+  ExternalLink, Sparkles, Calendar, CheckSquare, DollarSign, Play
 } from 'lucide-react';
 import { FEATURED_PROJECTS } from '../data/portfolioData';
 import { soundManager } from '../utils/audio';
 import { GithubIcon } from './SocialIcons';
-import confetti from 'canvas-confetti';
 
-interface QuestLogProps {
-  onGainXp: (amount: number) => void;
-}
-
-export const QuestLog: React.FC<QuestLogProps> = ({ onGainXp }) => {
-  const [completedObjectives, setCompletedObjectives] = useState<Record<string, boolean>>({});
-
-  const toggleObjective = (projId: string, index: number) => {
-    soundManager.playSelect();
-    const key = `${projId}-${index}`;
-    const nextState = !completedObjectives[key];
-    setCompletedObjectives(prev => ({ ...prev, [key]: nextState }));
-
-    if (nextState) {
-      onGainXp(20);
-      try {
-        confetti({
-          particleCount: 25,
-          spread: 45,
-          origin: { y: 0.8 },
-          colors: ['#2563EB', '#14B8A6', '#F59E0B']
-        });
-      } catch {
-        // Ignore if unavailable
-      }
-    }
-  };
-
+export const QuestLog: React.FC = () => {
   const handleLiveClick = (url: string) => {
     soundManager.playLevelUp();
-    onGainXp(30);
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -96,7 +66,7 @@ export const QuestLog: React.FC<QuestLogProps> = ({ onGainXp }) => {
                 {/* 2-Column Content: Left Details & Right Interactive Preview Area */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                   
-                  {/* Left Column: Project Overview & Objectives (7 Cols) */}
+                  {/* Left Column: Project Overview (7 Cols) */}
                   <div className="lg:col-span-7 space-y-6">
                     <div>
                       <h3 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
@@ -133,53 +103,6 @@ export const QuestLog: React.FC<QuestLogProps> = ({ onGainXp }) => {
                           </li>
                         ))}
                       </ul>
-                    </div>
-
-                    {/* Interactive Objectives Checklist */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-[#0F172A] uppercase tracking-wider">
-                          Quest Objectives (Click to test progress):
-                        </span>
-                        <span className="text-[10px] font-mono text-[#2563EB]">+20 EXP per objective</span>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        {project.objectives.map((obj, oIdx) => {
-                          const isDone = completedObjectives[`${project.id}-${oIdx}`];
-
-                          return (
-                            <div
-                              key={oIdx}
-                              onClick={() => toggleObjective(project.id, oIdx)}
-                              className={`p-3 border transition-all cursor-pointer flex items-start gap-3 ${
-                                isDone 
-                                  ? 'bg-emerald-50/70 border-emerald-300' 
-                                  : 'bg-white border-[#CBD5E1] hover:border-[#2563EB]'
-                              }`}
-                            >
-                              <button
-                                aria-label="Toggle Objective"
-                                className="mt-0.5 shrink-0 text-slate-400"
-                              >
-                                {isDone ? (
-                                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                                ) : (
-                                  <Circle className="w-4 h-4 text-[#CBD5E1]" />
-                                )}
-                              </button>
-                              <div className="text-xs">
-                                <span className={`font-mono font-bold block ${isDone ? 'text-emerald-800 line-through' : 'text-[#0F172A]'}`}>
-                                  {obj.title}
-                                </span>
-                                <p className="text-[#64748B] text-[11px] mt-0.5">
-                                  {obj.detail}
-                                </p>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
                     </div>
 
                     {/* Tech Stack Badges */}
@@ -403,4 +326,3 @@ export const QuestLog: React.FC<QuestLogProps> = ({ onGainXp }) => {
     </section>
   );
 };
-

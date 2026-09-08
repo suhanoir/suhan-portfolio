@@ -4,11 +4,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/audio';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
-interface ContactQuestProps {
-  onGainXp: (amount: number) => void;
-}
-
-export const ContactQuest: React.FC<ContactQuestProps> = ({ onGainXp }) => {
+export const ContactQuest: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [senderName, setSenderName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
@@ -19,14 +15,12 @@ export const ContactQuest: React.FC<ContactQuestProps> = ({ onGainXp }) => {
     soundManager.playSelect();
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setCopied(true);
-    onGainXp(20);
     setTimeout(() => setCopied(false), 2500);
   };
 
   const handleSendDraft = (e: React.FormEvent) => {
     e.preventDefault();
     soundManager.playLevelUp();
-    onGainXp(40);
     setFormSent(true);
 
     const subject = encodeURIComponent(`Quest Proposal from ${senderName || 'Recruiter/Developer'}`);
@@ -99,7 +93,7 @@ export const ContactQuest: React.FC<ContactQuestProps> = ({ onGainXp }) => {
                 </div>
                 {copied && (
                   <span className="text-[10px] font-mono text-emerald-600 font-bold block">
-                    Copied to clipboard! (+20 EXP)
+                    Copied to clipboard!
                   </span>
                 )}
               </div>
@@ -233,4 +227,3 @@ export const ContactQuest: React.FC<ContactQuestProps> = ({ onGainXp }) => {
     </section>
   );
 };
-

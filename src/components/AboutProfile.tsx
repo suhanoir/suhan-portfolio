@@ -3,11 +3,7 @@ import { User, GraduationCap, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO, ACADEMIC_RECORDS } from '../data/portfolioData';
 import { soundManager } from '../utils/audio';
 
-interface AboutProfileProps {
-  onGainXp: (amount: number) => void;
-}
-
-export const AboutProfile: React.FC<AboutProfileProps> = ({ onGainXp }) => {
+export const AboutProfile: React.FC = () => {
   return (
     <section id="about" className="py-16 md:py-24 bg-white border-b border-[#CBD5E1]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -135,10 +131,7 @@ export const AboutProfile: React.FC<AboutProfileProps> = ({ onGainXp }) => {
                   return (
                     <div
                       key={record.stage}
-                      onClick={() => {
-                        soundManager.playBlip(500 + index * 50);
-                        onGainXp(10);
-                      }}
+                      onClick={() => soundManager.playBlip(500 + index * 50)}
                       className="bg-white p-3.5 border border-[#CBD5E1] shadow-[2px_2px_0px_#E2E8F0] hover:border-[#2563EB] cursor-pointer transition-all group"
                     >
                       <div className="flex justify-between items-center mb-1.5 font-mono">
@@ -188,4 +181,3 @@ export const AboutProfile: React.FC<AboutProfileProps> = ({ onGainXp }) => {
     </section>
   );
 };
-

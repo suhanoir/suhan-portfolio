@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Menu, X, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX, Menu, X } from 'lucide-react';
 import { soundManager } from '../utils/audio';
 
 interface NavbarProps {
-  xp: number;
-  maxXp: number;
   level: string;
   isMuted: boolean;
   onToggleMute: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  xp,
-  maxXp,
   level,
   isMuted,
   onToggleMute
@@ -21,7 +17,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks = [
     { label: 'ABOUT', href: '#about' },
-    { label: 'SKILLS', href: '#skills' },
     { label: 'QUESTS', href: '#quests' },
     { label: 'ACHIEVEMENTS', href: '#achievements' },
     { label: 'CONTACT', href: '#contact' },
@@ -31,8 +26,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     soundManager.playBlip(600);
     setMobileMenuOpen(false);
   };
-
-  const xpPercent = Math.min(100, Math.round((xp / maxXp) * 100));
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#CBD5E1] transition-all">
@@ -73,25 +66,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </nav>
 
-          {/* XP Progression HUD & Audio Toggle */}
+          {/* Audio Toggle & CTA */}
           <div className="hidden sm:flex items-center gap-3">
-            {/* XP Bar Pill */}
-            <div className="flex items-center gap-2 bg-[#F8FAFC] border border-[#CBD5E1] px-2.5 py-1 shadow-[1px_1px_0px_#E2E8F0]">
-              <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" />
-              <div className="flex flex-col">
-                <div className="flex justify-between items-center text-[10px] font-mono font-semibold text-[#64748B] gap-3">
-                  <span>EXP</span>
-                  <span className="text-[#0F172A]">{xp} / {maxXp}</span>
-                </div>
-                <div className="w-24 h-1.5 bg-[#E2E8F0] overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] transition-all duration-300"
-                    style={{ width: `${xpPercent}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Audio Toggle Button */}
             <button
               onClick={onToggleMute}
@@ -143,17 +119,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b-2 border-[#CBD5E1] px-4 pt-3 pb-5 space-y-2 shadow-lg">
-          {/* Mobile XP display */}
-          <div className="bg-slate-50 border border-slate-200 p-2.5 mb-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="font-['Press_Start_2P'] text-[9px] text-[#2563EB]">{level}</span>
-              <span className="text-xs font-mono text-[#64748B]">EXP: {xp}/{maxXp}</span>
-            </div>
-            <div className="w-24 h-2 bg-slate-200">
-              <div className="h-full bg-[#2563EB]" style={{ width: `${xpPercent}%` }} />
-            </div>
-          </div>
-
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -178,4 +143,3 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
-

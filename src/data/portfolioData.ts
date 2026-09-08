@@ -15,20 +15,6 @@ export interface Project {
     label: string;
     value: string;
   }[];
-  objectives: {
-    title: string;
-    detail: string;
-  }[];
-}
-
-export interface SkillNode {
-  id: string;
-  name: string;
-  category: 'frontend' | 'backend' | 'database' | 'ai' | 'programming' | 'tools';
-  level: number; // 1 to 5
-  description: string;
-  highlightIn: string[]; // e.g. ["Daydream", "SkillQuest"]
-  iconName: string;
 }
 
 export interface AcademicRecord {
@@ -114,24 +100,6 @@ export const FEATURED_PROJECTS: Project[] = [
       "Expense Tracker: Detailed monthly expenditure monitoring in Indian Rupees (₹) with categorical breakdowns and budget stats.",
       "Security: Password hashing with bcryptjs (10 rounds), stateless HttpOnly JWT session cookies, and strict server-side userId scoping."
     ],
-    objectives: [
-      {
-        title: "Full-Stack Next.js 15 & React 19 Architecture",
-        detail: "Implemented Next.js App Router with server route handlers, dynamic server components, and responsive mobile layouts."
-      },
-      {
-        title: "PostgreSQL & Prisma ORM Schema",
-        detail: "Designed relational models for Users, Goals, Events, Daily Todos, and Expenses hosted on Neon Serverless."
-      },
-      {
-        title: "Secure Session Management",
-        detail: "Protected API routes with Jose-based JWT token generation and cookie-based stateless authorization."
-      },
-      {
-        title: "Micro-Interactions & Feedback",
-        detail: "Integrated Canvas Confetti for goal celebrations, responsive drawers for mobile screens, and real-time expense aggregations."
-      }
-    ],
     techStack: [
       "Next.js 15",
       "React 19",
@@ -169,24 +137,6 @@ export const FEATURED_PROJECTS: Project[] = [
       "Dynamic XP & Leveling: Real-time XP banking, progress recalculation, level-up celebration modals, and milestone confetti.",
       "Full-Stack Foundation: Built with Next.js App Router, bcryptjs password protection, and SQLite persistence via Prisma ORM."
     ],
-    objectives: [
-      {
-        title: "Google GenAI SDK Integration",
-        detail: "Configured Google Gemini 2.5 Flash with procedural prompt templates for structured educational breakdowns."
-      },
-      {
-        title: "Interactive RPG Node Graph",
-        detail: "Created undulating quest paths with responsive node states (Locked 🔒, Available ⚔️, and Completed ✅)."
-      },
-      {
-        title: "Stateful Progress Tracking",
-        detail: "Modeled LearningJourneys and QuestProgress relations with atomic XP incrementation upon quest verification."
-      },
-      {
-        title: "End-to-End Verification Suite",
-        detail: "Authored comprehensive verification scripts testing user isolation, zone unlock triggers, and session persistence."
-      }
-    ],
     techStack: [
       "Next.js 15",
       "React 19",
@@ -202,173 +152,6 @@ export const FEATURED_PROJECTS: Project[] = [
     ],
     liveUrl: "https://skill-quest-sigma.vercel.app",
     githubUrl: "https://github.com/suhanoir/SkillQuest"
-  }
-];
-
-export const SKILL_TREE_CATEGORIES = [
-  { id: "frontend", name: "Frontend Core", color: "#2563EB" },
-  { id: "backend", name: "Backend & Auth", color: "#14B8A6" },
-  { id: "database", name: "Database & ORM", color: "#F59E0B" },
-  { id: "ai", name: "AI Integration", color: "#8B5CF6" },
-  { id: "programming", name: "Languages & CS", color: "#0F172A" },
-  { id: "tools", name: "Dev Tools", color: "#64748B" }
-];
-
-export const SKILL_NODES: SkillNode[] = [
-  // Frontend
-  {
-    id: "react",
-    name: "React 19",
-    category: "frontend",
-    level: 4,
-    description: "Component lifecycle, modern hooks, state management, and optimized rendering.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "Code2"
-  },
-  {
-    id: "nextjs",
-    name: "Next.js 15",
-    category: "frontend",
-    level: 4,
-    description: "App Router, Server Components, Route Handlers, middleware, and dynamic layouts.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "Globe"
-  },
-  {
-    id: "typescript",
-    name: "TypeScript",
-    category: "frontend",
-    level: 4,
-    description: "Strict static typing, interfaces, generic utility types, and API payload modeling.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "FileCode2"
-  },
-  {
-    id: "tailwind",
-    name: "Tailwind CSS",
-    category: "frontend",
-    level: 5,
-    description: "Responsive utility-first layouts, modern CSS variables, animations, and micro-interactions.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "Palette"
-  },
-  {
-    id: "htmlcss",
-    name: "HTML5 & Modern CSS",
-    category: "frontend",
-    level: 5,
-    description: "Semantic web architecture, accessible markup, flexbox, grid, and CSS custom properties.",
-    highlightIn: ["Daydream", "SkillQuest", "my-first-website"],
-    iconName: "Layout"
-  },
-
-  // Backend
-  {
-    id: "node",
-    name: "Node.js",
-    category: "backend",
-    level: 4,
-    description: "JavaScript/TypeScript runtime execution, async I/O handling, and npm ecosystems.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "Server"
-  },
-  {
-    id: "route-handlers",
-    name: "Next.js API Handlers",
-    category: "backend",
-    level: 4,
-    description: "RESTful endpoints, request parsing, JSON response handling, and error middleware.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "Cpu"
-  },
-  {
-    id: "jwt-auth",
-    name: "JWT & Bcrypt Security",
-    category: "backend",
-    level: 4,
-    description: "Stateless authentication with Jose JWT, salted password hashing, and HttpOnly session cookies.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "ShieldCheck"
-  },
-
-  // Database
-  {
-    id: "prisma",
-    name: "Prisma ORM",
-    category: "database",
-    level: 4,
-    description: "Declarative schema modeling, automated client generation, migrations, and typed queries.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "Layers"
-  },
-  {
-    id: "postgres",
-    name: "PostgreSQL (Neon)",
-    category: "database",
-    level: 4,
-    description: "Relational database schema design, foreign keys, serverless connection pooling.",
-    highlightIn: ["Daydream"],
-    iconName: "Database"
-  },
-  {
-    id: "sqlite",
-    name: "SQLite",
-    category: "database",
-    level: 4,
-    description: "File-based relational data persistence with zero-friction development setup.",
-    highlightIn: ["SkillQuest"],
-    iconName: "HardDrive"
-  },
-
-  // AI
-  {
-    id: "gemini",
-    name: "Google Gemini AI",
-    category: "ai",
-    level: 4,
-    description: "Prompt engineering, structured schema generation with Google GenAI SDK (@google/genai).",
-    highlightIn: ["SkillQuest"],
-    iconName: "Sparkles"
-  },
-
-  // Languages & CS
-  {
-    id: "java",
-    name: "Java",
-    category: "programming",
-    level: 4,
-    description: "Object-oriented programming, classes, interfaces, inheritance, and algorithmic problem solving.",
-    highlightIn: ["Codes", "AU_java"],
-    iconName: "Terminal"
-  },
-  {
-    id: "discrete-math",
-    name: "Discrete Mathematics",
-    category: "programming",
-    level: 4,
-    description: "Logic, set theory, graph theory, combinatorics, and computer science foundations.",
-    highlightIn: ["Discrete-Maths-Notes"],
-    iconName: "Compass"
-  },
-
-  // Tools
-  {
-    id: "git",
-    name: "Git & GitHub",
-    category: "tools",
-    level: 4,
-    description: "Version control, branch management, pull requests, semantic commits, and open-source workflows.",
-    highlightIn: ["All Projects"],
-    iconName: "GitBranch"
-  },
-  {
-    id: "vercel",
-    name: "Vercel CI/CD",
-    category: "tools",
-    level: 4,
-    description: "Continuous deployment pipelines, environment variables configuration, and preview deployments.",
-    highlightIn: ["Daydream", "SkillQuest"],
-    iconName: "Cloud"
   }
 ];
 
@@ -419,4 +202,3 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: "Demonstrated consistent problem-solving dedication with 92% in 10th grade and 86% in 12th grade examinations."
   }
 ];
-

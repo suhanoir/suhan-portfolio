@@ -3,11 +3,7 @@ import { Award, CheckCircle, Sparkles, Shield, Rocket, GraduationCap, Cpu } from
 import { ACHIEVEMENTS } from '../data/portfolioData';
 import { soundManager } from '../utils/audio';
 
-interface AchievementsProps {
-  onGainXp: (amount: number) => void;
-}
-
-export const Achievements: React.FC<AchievementsProps> = ({ onGainXp }) => {
+export const Achievements: React.FC = () => {
   const getIcon = (code: string) => {
     switch (code) {
       case 'ACH_01': return <Rocket className="w-5 h-5 text-[#2563EB]" />;
@@ -42,10 +38,7 @@ export const Achievements: React.FC<AchievementsProps> = ({ onGainXp }) => {
           {ACHIEVEMENTS.map((ach, idx) => (
             <div
               key={ach.id}
-              onClick={() => {
-                soundManager.playBlip(550 + idx * 50);
-                onGainXp(15);
-              }}
+              onClick={() => soundManager.playBlip(550 + idx * 50)}
               className="pixel-card bg-white p-5 border border-[#CBD5E1] hover:border-[#2563EB] cursor-pointer transition-all flex flex-col justify-between group"
             >
               <div>
@@ -90,4 +83,3 @@ export const Achievements: React.FC<AchievementsProps> = ({ onGainXp }) => {
     </section>
   );
 };
-

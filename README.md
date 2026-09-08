@@ -14,7 +14,6 @@
 <p align="center">
   <a href="#-core-philosophy">Philosophy</a> •
   <a href="#-featured-quests-projects">Featured Quests</a> •
-  <a href="#-interactive-skill-tree">Skill Tree</a> •
   <a href="#-academic-progression">Academics</a> •
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-connect">Connect</a>
@@ -28,10 +27,10 @@
 
 > **Design Formula: 70% Professional Developer Portfolio + 30% Pixel / Gamified Experience**
 
-The website is engineered to immediately communicate technical ability, architectural discipline, and high-performance frontend craftsmanship to recruiters and engineering managers, enhanced by a tasteful, minimalist RPG progression system.
+The website is engineered to immediately communicate technical ability, architectural discipline, and high-performance frontend craftsmanship to recruiters and engineering managers, enhanced by a tasteful, minimalist RPG visual identity.
 
 - **Clean Light Palette**: Designed using a crisp, professional palette (`#2563EB` blue, `#14B8A6` teal, `#F59E0B` warm amber, `#F8FAFC` soft background, and `#0F172A` deep navy text).
-- **Dual Typography**: Ultra-readable modern sans-serif (`Plus Jakarta Sans`) for all descriptions and features, with retro pixel typography (`Press Start 2P`) strictly reserved for status indicators, XP badges, and quest tags.
+- **Dual Typography**: Ultra-readable modern sans-serif (`Plus Jakarta Sans`) for all descriptions and features, with retro pixel typography (`Press Start 2P`) strictly reserved for status indicators, quest tags, and section headers.
 - **Zero Bloat Audio Engine**: Built-in procedural 8-bit sound synthesizer using the native browser **Web Audio API** — zero external audio files, sub-millisecond response, with a global mute toggle.
 
 ---
@@ -72,21 +71,6 @@ Transforms any skill or curriculum into a structured 4-zone RPG quest chain powe
 
 ---
 
-## 🌳 Interactive Skill Tree
-
-An explorable ability matrix displaying verified technologies used across production projects:
-
-| Category | Technologies | Verified In |
-| :--- | :--- | :--- |
-| **Frontend Core** | React 19, Next.js 15 (App Router), TypeScript, Tailwind CSS, HTML5, Modern CSS | Daydream, SkillQuest |
-| **Backend & Security** | Node.js, Route Handlers, Stateless JWT (`jose`), Password Hashing (`bcryptjs`) | Daydream, SkillQuest |
-| **Database & ORM** | PostgreSQL (Neon Serverless), SQLite, Prisma ORM | Daydream, SkillQuest |
-| **AI Integration** | Google Gemini AI (`@google/genai` SDK), Structured Schema Generation | SkillQuest |
-| **Languages & CS** | Java (Data Structures & OOP), Discrete Mathematics Fundamentals | Codes, Discrete-Maths-Notes |
-| **DevOps & Tools** | Git, GitHub, Vercel CI/CD, PostCSS, npm | All Projects |
-
----
-
 ## 🎓 Academic Progression
 
 Clean progression metrics demonstrating academic consistency alongside software development:
@@ -113,7 +97,7 @@ Clean progression metrics demonstrating academic consistency alongside software 
 | :--- | :--- | :--- |
 | `--color-brand-primary` | `#2563EB` | Interactive CTAs, primary accents, active states |
 | `--color-brand-secondary` | `#14B8A6` | Feature badges, zone markers, secondary highlights |
-| `--color-brand-accent` | `#F59E0B` | XP counters, milestones, level badges |
+| `--color-brand-accent` | `#F59E0B` | Milestone badges, highlight indicators |
 | `--color-brand-bg` | `#F8FAFC` | Main canvas background with subtle grid overlay |
 | `--color-brand-surface` | `#FFFFFF` | Cards, modals, and panel surfaces |
 | `--color-brand-text` | `#0F172A` | Primary typography for maximum contrast |
@@ -161,10 +145,9 @@ suhan-portfolio/
 ├── public/                        # Static assets & icons
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.tsx             # Sticky HUD with XP bar and mute switch
+│   │   ├── Navbar.tsx             # Sticky HUD with navigation and mute switch
 │   │   ├── Hero.tsx               # Developer identity, pixel avatar & stats
 │   │   ├── AboutProfile.tsx       # Character sheet & academic progression
-│   │   ├── SkillTree.tsx          # Interactive ability matrix & inspector
 │   │   ├── QuestLog.tsx           # Project showcases (Daydream & SkillQuest)
 │   │   ├── Achievements.tsx       # Verified portfolio milestones
 │   │   ├── ContactQuest.tsx       # Final Quest contact card & mailer
@@ -174,7 +157,7 @@ suhan-portfolio/
 │   │   └── portfolioData.ts       # Centralized, verified data models
 │   ├── utils/
 │   │   └── audio.ts               # Zero-dependency Web Audio API synthesizer
-│   ├── App.tsx                    # Main coordinator & scroll XP observer
+│   ├── App.tsx                    # Main coordinator & application layout
 │   ├── index.css                  # Pixel styles, grid patterns & typography
 │   ├── main.tsx                   # React 19 application entry point
 │   └── vite-env.d.ts              # Ambient Vite client type definitions
